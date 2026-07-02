@@ -1,0 +1,23 @@
+blueprint:
+  id: wax-rwa-certificate-authenticity-verifier
+  tier: rwa-phygital
+  status: alpha-ready
+  benchmark_target: PX-Perfection-Standard-v1.0
+
+features:
+  - mobile_first_camera_verification
+  - on_chain_mint_trail_matching
+  - cryptographic_proof_visualization
+  - educational_provenance_flow
+
+recommended_stack:
+  camera: MediaDevices + WebXR
+  lookup: Hyperion + AtomicAssets
+  matching: client_side_crypto
+  ui: retro_pixel_glassmorphic
+
+machine_instructions:
+  - "Build mobile-first camera verification flow using MediaDevices API"
+  - "Implement client-side matching against AtomicAssets mint history via Hyperion"
+  - "Create beautiful proof visualization and educational provenance explanations"
+  - "Add clear security model documentation and edge case handling"
