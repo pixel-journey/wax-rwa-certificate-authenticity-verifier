@@ -1,23 +1,20 @@
 blueprint:
   id: wax-rwa-certificate-authenticity-verifier
   tier: rwa-phygital
-  status: alpha-ready
-  benchmark_target: PX-Perfection-Standard-v1.0
+  status: educational-reference
+  note: "demoScan returns verified false. No camera, no Hyperion, no cryptographic match."
 
 features:
-  - mobile_first_camera_verification
-  - on_chain_mint_trail_matching
-  - cryptographic_proof_visualization
-  - educational_provenance_flow
+  - demo_scan_returns_verified_false
 
-recommended_stack:
-  camera: MediaDevices + WebXR
-  lookup: Hyperion + AtomicAssets
-  matching: client_side_crypto
-  ui: retro_pixel_glassmorphic
+not_in_this_repo:
+  - MediaDevices
+  - WebXR
+  - Hyperion mint trail
+  - client_side_crypto
+  - native AtomicAssets token backing
 
 machine_instructions:
-  - "Build mobile-first camera verification flow using MediaDevices API"
-  - "Implement client-side matching against AtomicAssets mint history via Hyperion"
-  - "Create beautiful proof visualization and educational provenance explanations"
-  - "Add clear security model documentation and edge case handling"
+  - "Teach demoScan() and the test. Do not describe a camera flow as implemented."
+  - "Do not repeat the 2026-10-26 AtomicAssets GET in docs/API-USAGE.md as a fresh result."
+  - "Do not teach backasset or a non-empty tokens_to_back."

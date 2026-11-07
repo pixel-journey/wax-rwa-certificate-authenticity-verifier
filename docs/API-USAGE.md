@@ -17,7 +17,7 @@ On 2026-10-26 a one-row `pixeljourney` page returned `immutable_data`, `template
 `wax-advanced-rwa-provenance-and-authenticity` only checks that the latest name matches. It does not walk history. A mint trail, if you add one, is Hyperion `get_actions` with `limit`, not a second copy of the photo. `wax-rwa-provenance-genealogy-tree` counts hops. It does not scan a camera.
 ## Shared rules
 
-This file does not send the requests. The README and any page already in the repo were not replaced. The tested request builder is [wax-public-endpoint-failover](https://github.com/pixel-journey/wax-public-endpoint-failover) (`docs/USAGE-EXAMPLES.md`).
+This file does not send the requests. The page calls `demoScan()` and does not verify. The 2026-10-26 GET was not repeated on 2026-11-07.
 
 - One family, one list, at most five https origins. Walk in order. Stop at the first success. A custom origin is allowed. `http` is only for localhost.
 - Trust a chain or history host only after `chain_id` is `1064487b3cd1a897ce03ae5b6a865651747e2e152090f99c1d19d44e01aea5a4`.

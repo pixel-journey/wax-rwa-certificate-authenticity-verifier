@@ -1,60 +1,47 @@
 'use client';
 
 import React, { useState } from 'react';
+import { demoScan, type DemoScan } from '../src/scan';
 
 export default function RWACertificateVerifier() {
-  const [scanResult, setScanResult] = useState<any>(null);
-  const [isScanning, setIsScanning] = useState(false);
-
-  const simulateScan = () => {
-    setIsScanning(true);
-    setTimeout(() => {
-      setScanResult({
-        verified: true,
-        assetId: '1099511627776',
-        collection: 'PixelJourney Phygitals',
-        mintDate: '2026-03-15',
-        currentOwner: 'pxjourney',
-        proof: 'Cryptographic match successful — physical tag matches on-chain mint trail',
-      });
-      setIsScanning(false);
-    }, 1200);
-  };
+  const [scanResult, setScanResult] = useState<DemoScan | null>(null);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white p-6">
       <div className="max-w-2xl mx-auto">
-        <div className="font-press-start text-2xl tracking-widest text-emerald-400 mb-2">RWA CERTIFICATE VERIFIER</div>
-        <div className="text-xs opacity-60 mb-8">Pixel Journey • Mobile-First Phygital Authenticity • Camera + On-Chain Proof</div>
+        <div className="text-2xl tracking-widest text-emerald-400 mb-2">RWA CERTIFICATE</div>
+        <div className="text-xs opacity-60 mb-8">
+          Educational reference. No camera. No AtomicAssets row. Not a verification.
+        </div>
 
-        <div className="glassmorphic-crt pixel-border p-6 rounded-2xl mb-6 text-center">
-          {!scanResult ? (
+        <div className="p-6 rounded-2xl mb-6 text-center border border-white/10">
+          {scanResult === null ? (
             <>
-              <div className="text-sm mb-4 opacity-80">Point your camera at the physical security tag</div>
+              <div className="text-sm mb-4 opacity-80">
+                The button calls demoScan(). It does not open a camera.
+              </div>
               <button
-                onClick={simulateScan}
-                disabled={isScanning}
-                className="px-8 py-4 bg-emerald-600 rounded-2xl font-medium disabled:opacity-50"
+                type="button"
+                onClick={() => setScanResult(demoScan())}
+                className="px-8 py-4 bg-emerald-600 rounded-2xl font-medium"
               >
-                {isScanning ? 'Scanning...' : 'Start Camera Scan (Demo)'}
+                Run demoScan()
               </button>
             </>
           ) : (
             <div className="text-left">
-              <div className="text-emerald-400 font-medium mb-2">✅ VERIFIED — AUTHENTIC</div>
+              <div className="text-amber-300 font-medium mb-2">NOT VERIFIED</div>
               <div className="space-y-1 text-sm">
-                <div><span className="opacity-60">Asset ID:</span> {scanResult.assetId}</div>
-                <div><span className="opacity-60">Collection:</span> {scanResult.collection}</div>
-                <div><span className="opacity-60">Minted:</span> {scanResult.mintDate}</div>
-                <div><span className="opacity-60">Current Owner:</span> {scanResult.currentOwner}</div>
+                <div><span className="opacity-60">demo:</span> {String(scanResult.demo)}</div>
+                <div><span className="opacity-60">verified:</span> {String(scanResult.verified)}</div>
               </div>
-              <div className="mt-4 p-3 bg-black/40 rounded text-xs">{scanResult.proof}</div>
+              <div className="mt-4 p-3 bg-black/40 rounded text-xs">{scanResult.reason}</div>
             </div>
           )}
         </div>
 
         <div className="text-xs opacity-70">
-          In production, this uses the device camera + Hyperion to fetch AtomicAssets mint history and performs cryptographic matching client-side. No centralized database required.
+          AtomicAssets v2 does not back an NFT with a physical tag. A real check would read an asset row you name. This repo does not.
         </div>
       </div>
     </div>
